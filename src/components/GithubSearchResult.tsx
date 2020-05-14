@@ -15,6 +15,12 @@ const Item = styled.div`
   border-bottom: 0.1rem solid #eeeeee;
 `
 
+const Header = styled(Item)`
+  margin-top: 1rem;
+  font-weight: 600;
+  border-bottom: 0.1rem solid black;
+`
+
 const Name = styled.div`
   flex: 1;
   display: flex;
@@ -44,7 +50,7 @@ const Link = styled.a`
   cursor: pointer;
 `
 
-const Header = styled.div`
+const Info = styled.div`
   height: 4rem;
   display: flex;
   justify-content: flex-start;
@@ -62,7 +68,6 @@ const Nav = styled.div`
   align-items: center;
   font-size: 1.4rem;
   font-weight: 400;
-  border-bottom: 0.1rem solid gray;
 `
 
 interface IGithubSearchResultProps {
@@ -73,7 +78,7 @@ interface IGithubSearchResultProps {
 
 const GithubSearchResult = ({ result, next, prev }: IGithubSearchResultProps) => (
   <Wrapper>
-    <Header>{result.total_count ? <>Total Count: {result.total_count}</> : <>Found Jack ..</>}</Header>
+    <Info>{result.total_count ? <>Total Count: {result.total_count}</> : <>Found Jack ..</>}</Info>
 
     {result.total_count > 0 && (
       <Nav>
@@ -81,6 +86,12 @@ const GithubSearchResult = ({ result, next, prev }: IGithubSearchResultProps) =>
         <div>{next && <Link onClick={next}>next</Link>}</div>
       </Nav>
     )}
+
+    <Header>
+      <Id>Id</Id>
+      <Name>Name</Name>
+      <Number>Watchers</Number>
+    </Header>
 
     {result.items.map((x, i) => (
       <Item key={x.id}>
