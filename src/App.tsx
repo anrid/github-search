@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import Spinner from './components/SpinningOctocat'
+import SearchBox from './components/SearchBox'
+import SearchResult from './components/GithubSearchResult'
+import { useGithubSearchApi } from './github'
 
-function App() {
+const Wrapper = styled.div`
+  width: 40rem;
+  display: flex;
+  justify-content: flex-start;
+`
+
+const Inner = styled.div`
+  margin: 2rem 20rem;
+`
+
+const Error = styled.div`
+  color: red;
+`
+
+const SearchResultBox = styled.div``
+
+const App = () => {
+  const { result, isLoading, isError, search, next, prev } = useGithubSearchApi()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      <Inner>
+        <SearchBox onSearch={search} />
+        <SearchResultBox>
+          {isError && <Error>Github search failed!</Error>}
+
+          {isLoading && <Spinner />}
+
+          {!isLoading && <SearchResult result={result} next={next} prev={prev} />}
+        </SearchResultBox>
+      </Inner>
+    </Wrapper>
+  )
 }
 
-export default App;
+export default App

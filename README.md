@@ -1,44 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Github Search
 
-## Available Scripts
+A simple React app that searches Github.
 
-In the project directory, you can run:
+### Acceptance Criteria
 
-### `yarn start`
+- Display repository’s `id`, `name`, `watchers_count`.
+- Sort the results by the number of _stars_.
+- Have a search input that will show results (from all possible repositories) to those that have its name matches the search field.
+- Think of this as a green-field project with the freedom to choose whatever you feel is best, e.g. 3rd party libraries can be used if necessary.
+- Feel free to use code bootstrapping tools (e.g. create-react-app) to save yourself time setting up the project.
+- There is no need to focus on the UX of the page.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Implementation Steps - Overview
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Ensure we can get the right data via the Github API.
+2. Generate a new React app using `create-react-app`.
+3. Create basic component structure; layout, search field, search result, etc.
+4. Call API and render result.
+5. Implement search.
+6. Make things "purrty".
 
-### `yarn test`
+### Implementation Details
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Do a quick curl call to see we can get the right data:
 
-### `yarn build`
+```bash
+curl -s 'https://api.github.com/search/repositories?q=ace&sort=stars&order=desc' | grep stargazers_count
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Output:
+#   "stargazers_count": 21482,
+#   "stargazers_count": 3568,
+#   "stargazers_count": 2458,
+#   "stargazers_count": 2165,
+#   .. (27 more repos) ..
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+We get the search results in the correct order.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Generate an app using `create-react-app`:
 
-### `yarn eject`
+```bash
+# TypeScript FTW.
+yarn create react-app --typescript github-search
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+cd github-search
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Boldly upgrade to latest everything (only the brave):
+yarn upgrade-interactive --latest
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# A must-have:
+yarn add styled-components @types/styled-components
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Next.
 
-## Learn More
+### Run
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+yarn start
+```
