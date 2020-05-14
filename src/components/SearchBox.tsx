@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  border: 0.1rem solid gray;
-  padding: 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 0.2rem;
 `
 
 const SearchField = styled.input`

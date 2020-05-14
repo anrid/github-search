@@ -2,7 +2,24 @@
 
 A simple React app that searches Github.
 
-### Acceptance Criteria
+## Demo App
+
+https://github-search-pi.now.sh/
+
+## Run
+
+```bash
+yarn start
+```
+
+## Deploy
+
+```bash
+# Deploy using Vercel / Zeit (https://vercel.com/)
+now
+```
+
+## Acceptance Criteria
 
 - Display repository’s `id`, `name`, `watchers_count`.
 - Sort the results by the number of _stars_.
@@ -11,7 +28,7 @@ A simple React app that searches Github.
 - Feel free to use code bootstrapping tools (e.g. create-react-app) to save yourself time setting up the project.
 - There is no need to focus on the UX of the page.
 
-### Implementation Steps - Overview
+## Implementation Steps - Overview
 
 1. Ensure we can get the right data via the Github API.
 2. Generate a new React app using `create-react-app`.
@@ -21,7 +38,7 @@ A simple React app that searches Github.
 6. Implement pagination.
 7. Make things "purrty".
 
-### Implementation Details
+## Implementation Details
 
 1. Do a quick curl call to see we can get the right data.
 
@@ -81,16 +98,3 @@ yarn add styled-components @types/styled-components
 7. Make things "purrty".
 
    Add some bling to make our app look somewhat less crappy.
-
-### Run
-
-```bash
-yarn start
-```
-
-### Deploy
-
-```bash
-# Deploy using Vercel / Zeit (https://vercel.com/)
-now
-```

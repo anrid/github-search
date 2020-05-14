@@ -6,7 +6,7 @@ import SearchResult from './components/GithubSearchResult'
 import { useGithubSearchApi } from './github'
 
 const Wrapper = styled.div`
-  width: 40rem;
+  width: 60rem;
   display: flex;
   justify-content: flex-start;
 `
