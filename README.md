@@ -24,9 +24,8 @@ now
 - Display repository’s `id`, `name`, `watchers_count`.
 - Sort the results by the number of _stars_.
 - Have a search input that will show results (from all possible repositories) to those that have its name matches the search field.
-- Think of this as a green-field project with the freedom to choose whatever you feel is best, e.g. 3rd party libraries can be used if necessary.
-- Feel free to use code bootstrapping tools (e.g. create-react-app) to save yourself time setting up the project.
-- There is no need to focus on the UX of the page.
+- Any 3rd-party libraries can be used if necessary.
+- No need to focus on the UX of the page.
 
 ## Implementation Steps - Overview
 
@@ -85,6 +84,8 @@ yarn add styled-components @types/styled-components
    We just want to make a API call, e.g. inside a React effect hook, and dump the data to the screen.
 
    This basically just confirms that we're wired up everything correctly.
+
+   It's probably a good idea to save the Github search response to a local file and use the data during development to speed things up a bit, e.g. not having to perform an actual search API call everytime you reload the app.
 
 5. Implement search.
 
